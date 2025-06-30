@@ -155,4 +155,13 @@ OctetString CalculateAuts(const OctetString &sqn, const OctetString &ak, const O
     return auts;
 }
 
+OctetString CalculateAkmaKey(const OctetString &kAusf, const Supi &supi)
+{
+    OctetString inputParams[2];
+    inputParams[0] = crypto::EncodeKdfString(supi.value);
+    inputParams[1] = crypto::EncodeKdfString(rid);
+
+    return crypto::CalculateKdfKey(kAusf, KAKMA_derivation_function_code, inputParams, 2);
+} 
+
 } // namespace nr::ue::keys
