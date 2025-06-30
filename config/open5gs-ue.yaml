@@ -2,10 +2,10 @@
 supi: 'imsi-999700000000001'
 # Mobile Country Code value of HPLMN
 hmcc: '999'
-mcc: '999'   # for VPLMN
+mcc: '001'   # for VPLMN
 # Mobile Network Code value of HPLMN (2 or 3 digits)
 hmnc: '70'
-mnc: '70'   # for vPLMN
+mnc: '01'   # for vPLMN
 # SUCI Protection Scheme : 0 for Null-scheme, 1 for Profile A and 2 for Profile B
 protectionScheme: 0
 # Home Network Public Key for protecting with SUCI Profile A
