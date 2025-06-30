@@ -4,7 +4,7 @@ NC=\033[0m
 build: FORCE
 	rm -fr logs # Old version log files
 	mkdir -p build
-	rm -fr build/*
+	#rm -fr build/*
 	
 	# cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" . -B cmake-build-debug
 	cmake -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" . -B cmake-build-release

@@ -75,6 +75,7 @@ nas::IE5gsMobileIdentity NasMm::generateSuci()
 {
     auto &supi = m_base->config->supi;
     auto &plmn = m_base->config->hplmn;
+    //mrpark auto &plmn = m_base->config->vplmn;
     auto &protectionScheme = m_base->config->protectionScheme;
     auto &homeNetworkPublicKeyId = m_base->config->homeNetworkPublicKeyId;
     auto &homeNetworkPublicKey = m_base->config->homeNetworkPublicKey;

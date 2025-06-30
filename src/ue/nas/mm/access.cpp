@@ -132,15 +132,27 @@ EUacResult NasMm::performUac()
 
         if (m_base->config->uacAic.mps && m_rmState == ERmState::RM_REGISTERED && currentPlmn.hasValue())
         {
+#if 0
             if (currentPlmn == m_base->config->hplmn || m_storage->equivalentPlmnList->contains(currentPlmn) ||
                 currentPlmn.mcc == m_base->config->hplmn.mcc)
+                ais[1] = true;
+            else 
+#endif   
+            if (currentPlmn == m_base->config->vplmn || m_storage->equivalentPlmnList->contains(currentPlmn) ||
+                currentPlmn.mcc == m_base->config->vplmn.mcc)
                 ais[1] = true;
         }
 
         if (m_base->config->uacAic.mcs && m_rmState == ERmState::RM_REGISTERED && currentPlmn.hasValue())
         {
+#if 0
             if (currentPlmn == m_base->config->hplmn || m_storage->equivalentPlmnList->contains(currentPlmn) ||
                 currentPlmn.mcc == m_base->config->hplmn.mcc)
+                ais[2] = true;
+            else
+#endif
+            if (currentPlmn == m_base->config->vplmn || m_storage->equivalentPlmnList->contains(currentPlmn) ||
+                currentPlmn.mcc == m_base->config->vplmn.mcc)
                 ais[2] = true;
         }
 
@@ -152,6 +164,7 @@ EUacResult NasMm::performUac()
                 ais[2] = true;
         }
 
+#if 0
         if (currentPlmn.hasValue() &&
             (currentPlmn == m_base->config->hplmn || m_storage->equivalentPlmnList->contains(currentPlmn)))
         {
@@ -160,9 +173,31 @@ EUacResult NasMm::performUac()
             if (m_base->config->uacAcc.cls15)
                 ais[15] = true;
         }
-
+        else 
+#endif
+        if (currentPlmn.hasValue() &&
+            (currentPlmn == m_base->config->vplmn || m_storage->equivalentPlmnList->contains(currentPlmn)))
+        {
+            if (m_base->config->uacAcc.cls11)
+                ais[11] = true;
+            if (m_base->config->uacAcc.cls15)
+                ais[15] = true;
+        }
+#if 0
         if (currentPlmn.hasValue() &&
             (currentPlmn == m_base->config->hplmn || currentPlmn.mcc == m_base->config->hplmn.mcc))
+        {
+            if (m_base->config->uacAcc.cls12)
+                ais[12] = true;
+            if (m_base->config->uacAcc.cls13)
+                ais[13] = true;
+            if (m_base->config->uacAcc.cls14)
+                ais[14] = true;
+        }
+        else 
+#endif
+        if (currentPlmn.hasValue() &&
+            (currentPlmn == m_base->config->vplmn || currentPlmn.mcc == m_base->config->vplmn.mcc))
         {
             if (m_base->config->uacAcc.cls12)
                 ais[12] = true;

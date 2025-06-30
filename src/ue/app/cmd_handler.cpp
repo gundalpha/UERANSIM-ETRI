@@ -139,6 +139,7 @@ void UeCmdHandler::handleCmdImpl(NmUeCliCommand &msg)
         auto json = Json::Obj({
             {"supi", ToJson(m_base->config->supi)},
             {"hplmn", ToJson(m_base->config->hplmn)},
+            {"vplmn", ToJson(m_base->config->vplmn)},
             {"imei", ::ToJson(m_base->config->imei)},
             {"imeisv", ::ToJson(m_base->config->imeiSv)},
             {"ecall-only", ::ToJson(m_base->nasTask->usim->m_isECallOnly)},

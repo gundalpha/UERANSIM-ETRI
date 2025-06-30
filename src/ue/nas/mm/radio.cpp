@@ -89,6 +89,8 @@ void NasMm::performPlmnSelection()
             continue;
         if (nas::utils::ServiceAreaListForbidsPlmn(m_storage->serviceAreaList->get(), nas::utils::PlmnFrom(plmn)))
             continue;
+        if (plmn == m_base->config->vplmn)
+            candidates.push_back(plmn);
         if (m_storage->equivalentPlmnList->contains(plmn))
             candidates.push_back(plmn);
     }

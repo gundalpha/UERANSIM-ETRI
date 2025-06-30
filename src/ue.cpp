@@ -105,9 +105,14 @@ static nr::ue::UeConfig *ReadConfigYaml()
     auto *result = new nr::ue::UeConfig();
     auto config = YAML::LoadFile(g_options.configFile);
 
-    result->hplmn.mcc = yaml::GetInt32(config, "mcc", 1, 999);
+    result->hplmn.mcc = yaml::GetInt32(config, "hmcc", 1, 999);
+    yaml::GetString(config, "hmcc", 3, 3);
+    result->hplmn.mnc = yaml::GetInt32(config, "hmnc", 0, 999);
+    result->hplmn.isLongMnc = yaml::GetString(config, "hmnc", 2, 3).size() == 3;
+    //Vplmn
+    result->vplmn.mcc = yaml::GetInt32(config, "mcc", 1, 999);
     yaml::GetString(config, "mcc", 3, 3);
-    result->hplmn.mnc = yaml::GetInt32(config, "mnc", 0, 999);
+    result->vplmn.mnc = yaml::GetInt32(config, "mnc", 0, 999);
     result->hplmn.isLongMnc = yaml::GetString(config, "mnc", 2, 3).size() == 3;
     if (yaml::HasField(config, "routingIndicator"))
         result->routingIndicator = yaml::GetString(config, "routingIndicator", 1, 4);
@@ -364,6 +369,7 @@ static nr::ue::UeConfig *GetConfigByUe(int ueIndex)
     c->tunName = g_refConfig->tunName;
     c->tunNetmask = g_refConfig->tunNetmask;
     c->hplmn = g_refConfig->hplmn;
+    c->vplmn = g_refConfig->vplmn;
     c->configuredNssai = g_refConfig->configuredNssai;
     c->defaultConfiguredNssai = g_refConfig->defaultConfiguredNssai;
     c->supportedAlgs = g_refConfig->supportedAlgs;

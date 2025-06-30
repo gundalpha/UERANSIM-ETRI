@@ -98,6 +98,7 @@ struct UeConfig
     OctetString homeNetworkPublicKey{};
     std::optional<std::string> routingIndicator{};
     Plmn hplmn{};
+    Plmn vplmn{};
     OctetString key{};
     OctetString opC{};
     OpType opType{};
