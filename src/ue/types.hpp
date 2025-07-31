@@ -403,6 +403,7 @@ struct UeKeys
     OctetString kAmf{};
     OctetString kNasInt{};
     OctetString kNasEnc{};
+    OctetString kAkma{};
 
     [[nodiscard]] UeKeys deepCopy() const
     {
